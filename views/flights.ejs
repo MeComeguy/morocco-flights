@@ -1,0 +1,45 @@
+<!-- views/flights.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Moroccan Airline Flights</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>Callsign</th>
+                <th>Aircraft Type</th>
+                <th>Registration</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Altitude (ft)</th>
+                <th>Ground Speed (km/h)</th>
+                <th>Vertical Speed (ft/min)</th>
+                <th>ETA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% flights.forEach(flight => { %>
+                <tr>
+                    <td><%= flight.flight %></td>
+                    <td><%= flight.callsign %></td>
+                    <td><%= flight.type %></td>
+                    <td><%= flight.reg %></td>
+                    <td><%= flight.orig_iata %> (<%= flight.orig_icao %>)</td>
+                    <td><%= flight.dest_iata %> (<%= flight.dest_icao %>)</td>
+                    <td><%= flight.alt %></td>
+                    <td><%= flight.gspeed %></td>
+                    <td><%= flight.vspeed %></td>
+                    <td><%= new Date(flight.eta).toLocaleString() %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
